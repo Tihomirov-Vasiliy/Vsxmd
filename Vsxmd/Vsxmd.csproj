@@ -24,18 +24,9 @@
 						<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
 				</PackageReference>
 		</ItemGroup>
-  <ItemGroup>
- 
-    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
-    </PackageReference>
-    <AdditionalFiles Include="stylecop.json" />
-  </ItemGroup>
-  <!-- NuGet Metadata: https://docs.microsoft.com/en-us/dotnet/core/tools/csproj#nuget-metadata-properties -->
   <PropertyGroup>
-    <Title>Vsxmd</Title>
-    <Version>9.9.9</Version>
+    <Title>ReadmeGenerator</Title>
+    <Version>0.0.1</Version>
     <Authors>Junle Li, Sales Lessa Lopes</Authors>
     <Description>VS XML documentation -&gt; Markdown syntax.</Description>
     <Copyright>Copyright 2015-Present</Copyright>

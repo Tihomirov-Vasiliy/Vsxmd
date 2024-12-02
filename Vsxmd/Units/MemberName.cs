@@ -103,7 +103,9 @@ namespace Vsxmd.Units
                         ? $"{this.FriendlyName.Escape()} `{this.Kind.ToLowerString()}`"
                         :   this.Kind == MemberKind.Constructor || this.Kind == MemberKind.Method
                             ? $"{this.FriendlyName.Escape()}({this.paramNames?.Join(",") ?? string.Empty}) `{this.Kind.ToLowerString()}`"
-                            : string.Empty);
+                            : string.Empty)
+                            .Replace(" ", "-")
+                            .ToLower();
                 return result;
             }
         }
@@ -156,7 +158,7 @@ namespace Vsxmd.Units
             this.StrippedName.Split('(').First();
 
         private string MsdnName =>
-            this.LongName.Split('{').First();
+            this.LongName.Split('{').First().ToLower();
 
         private IEnumerable<string> NameSegments =>
             this.LongName.Split('.');
@@ -232,7 +234,7 @@ namespace Vsxmd.Units
         /// <returns>The generated Markdown reference link.</returns>
         internal string ToReferenceLink(bool useShortName) =>
             $"{this.Namespace}.".StartsWith("System.", StringComparison.Ordinal)
-            ? $"[{this.GetReferenceName(useShortName).Escape()}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:{this.MsdnName} '{this.StrippedName}')"
+            ? $"[{this.GetReferenceName(useShortName).Escape()}](https://learn.microsoft.com/en-us/dotnet/api/{this.MsdnName})"
             : $"[{this.GetReferenceName(useShortName).Escape()}](#{this.AsuzeDevopsLink})";
 
         private string GetReferenceName(bool useShortName) =>
